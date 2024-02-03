@@ -10,7 +10,7 @@ Also you might want to check `npm run up` and `npm run up-dev` commands.
 Verify the installation by checking Settings - Extensions screen. The extension should be there with correct version number.
 
 ## Usage
-1. Create a Flow with Event Hook trigger. The trigger should be configured as blocking, scoped to items.create and return data of Last Operation.
+1. Create a Flow with Event Hook trigger. The trigger should be configured as blocking, scoped to items.create, filtered to a relevant collection and return Data of Last Operation.
 
 ![Directus Operation Slugify Setup](media/flow.png?raw=true)
 
@@ -20,3 +20,13 @@ Verify the installation by checking Settings - Extensions screen. The extension 
    - Name of the slug field. The name of the field in your item's payload to put the generated slug such as `slug`.
 
 ![Directus Operation Slugify Setup](media/options.png?raw=true)
+
+3. Create a new item.
+
+---
+
+Version management of this repository done by [releaser](https://github.com/muratgozel/node-releaser) 🚀
+
+---
+
+Thanks for watching 🐬
