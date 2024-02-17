@@ -4,7 +4,7 @@ export default defineOperationApp({
 	id: 'operation-slugify',
 	name: 'Slugify',
 	icon: 'box',
-	description: 'Generates a language aware slug from texts.',
+	description: 'Generates language aware slugs.',
 	overview: ({ valueField }) => [
 		{
 			label: 'Value Field',
