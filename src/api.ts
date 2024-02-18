@@ -11,10 +11,16 @@ type Data = Record<string, any>
 export default defineOperationApi<Options>({
 	id: 'operation-slugify',
 	handler: async ({ valueField, languageCodePath, slugField }, { data, services, database, getSchema, logger }: { data: Data }) => {
+		const hasValueField = data.$trigger.payload.hasOwnProperty(valueField)
+		const lang = verifyLanguage(languageCodePath, data.$trigger.payload)
+		if (!hasValueField || !lang) {
+			return data.$trigger.payload
+		}
+
 		// generate a slug if it's empty on any update operation
-		const isUpdate = data.$trigger.event.split('.').slice(-1) === 'update'
+		const isUpdate = data.$trigger.event.split('.').slice(-1)[0] === 'update'
 		if (isUpdate) {
-			const collection = data.$trigger.event.split('.').slice(-2, -1)
+			const collection = data.$trigger.event.split('.')[0]
 			const schema = await getSchema({ database })
 			const itemsService = new services.ItemsService(collection, {
 				schema,
@@ -27,27 +33,40 @@ export default defineOperationApi<Options>({
 			}
 		}
 
-		// find language
-		const arr: string[] = languageCodePath.split('.')
-		let lang = 'en'
-		if (arr.length === 1 && (arr[0] as string).length === 2) lang = arr[0] as string
-		else if (arr.length === 1) lang = data.$trigger.payload[arr[0] as string]
-		else if (arr.length === 2) lang = data.$trigger.payload[arr[0] as string][arr[1] as string]
-		else lang = 'en'
-
 		// get value to generate the slug from
 		const value = data.$trigger.payload[valueField]
 
 		// generate slug
 		const slug = getSlug(value, {
 			separator: '-',
-			lang: lang.slice(0, 2)
+			lang
 		})
 
-		logger.info('[operation-slugify] input: "' + value + '" slug: "' + slug + '"' + ' language: "' + lang.slice(0, 2) + '"')
+		logger.info('[operation-slugify] input: "' + value + '" slug: "' + slug + '"' + ' language: "' + lang + '"')
 
 		return Object.assign({}, data.$trigger.payload, {
 			[slugField]: slug
 		})
 	},
 });
+
+function verifyLanguage (input: string, payload: Record<string, any>): string | boolean {
+	const arr: string[] = input.split('.')
+
+	if (arr.length === 1 && (arr[0] as string).length === 2) {
+		return arr[0] as string
+	}
+	else if (arr.length === 1) {
+		return payload.hasOwnProperty(arr[0] as string) ? (payload[arr[0] as string]).slice(0, 2) : false
+	}
+	else if (arr.length === 2) {
+		return payload.hasOwnProperty(arr[0] as string)
+			? payload[arr[0] as string].hasOwnProperty(arr[1] as string)
+				? (payload[arr[0] as string][arr[1] as string]).slice(0, 2)
+				: false
+			: false
+	}
+	else {
+		return 'en'
+	}
+}
