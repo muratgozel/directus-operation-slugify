@@ -13,10 +13,10 @@ npm i @muratgozel/directus-operation-slugify
 
 If you still not sure, check `npm run up` and `npm run up-dev` commands. Those are the ones I use for installing this extension.
 
-After installing, verify it by checking Settings - Extensions screen. The extension should be there with correct version number.
-
 ### Note on Directus Marketplace
 Directus recently released their marketplace for extensions which makes installing a lot easier. Unfortunately this feature is still in beta and because of the limitations it brang for this kind of extension, I decided to wait and not publish this extension in the marketplace. Still, you'r able install it by setting `MARKETPLACE_TRUST=all` env var in your Directus instance, that's what they said. I'll update this section and the package itself once the feature reaches satisfying kind of stability.
+
+After installing, verify it by checking Settings - Extensions screen. The extension should be there with correct version number.
 
 ![Directus Operation Slugify Verify Installation](media/verify.png?raw=true)
 

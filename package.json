@@ -2,7 +2,7 @@
   "name": "@muratgozel/directus-operation-slugify",
   "description": "Generates a language aware slug from texts.",
   "icon": "extension",
-  "version": "v1.1.6",
+  "version": "v1.1.7",
   "keywords": [
     "directus",
     "directus-extension",
