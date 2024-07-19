@@ -5,10 +5,18 @@ export default defineOperationApp({
 	name: 'Slugify',
 	icon: 'box',
 	description: 'Generates language aware slugs.',
-	overview: ({ valueField }) => [
+	overview: ({ valueField, slugField, languageCodePath }) => [
 		{
-			label: 'Value Field',
+			label: 'Generates slugs based on',
 			text: valueField,
+		},
+		{
+			label: 'Name of the slug field',
+			text: slugField,
+		},
+		{
+			label: 'Language indicator',
+			text: languageCodePath,
 		},
 	],
 	options: [

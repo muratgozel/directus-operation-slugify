@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@types/speakingurl':
+        specifier: ^13.0.6
+        version: 13.0.6
       speakingurl:
         specifier: ^14.0.1
         version: 14.0.1
@@ -18,9 +21,6 @@ importers:
       '@types/node':
         specifier: ^20.14.9
         version: 20.14.9
-      '@types/speakingurl':
-        specifier: ^13.0.6
-        version: 13.0.6
       node-releaser:
         specifier: ^2.1.4
         version: 2.1.4

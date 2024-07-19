@@ -1,15 +1,18 @@
 {
-  "name": "directus-extension-directus-operation-slugify",
+  "name": "directus-operation-slugify",
   "description": "Generates a language aware slug from texts.",
   "icon": "extension",
-  "version": "v1.1.3",
+  "version": "v1.1.4",
   "keywords": [
     "directus",
     "directus-extension",
-    "directus-custom-operation",
+    "directus-extension-operation",
     "slugify"
   ],
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "author": "Murat Gözel <murat@gozel.com.tr>",
   "repository": {
     "type": "git",
@@ -21,6 +24,7 @@
   "homepage": "https://github.com/muratgozel/directus-operation-slugify#readme",
   "directus:extension": {
     "type": "operation",
+    "host": "^10.3.0",
     "path": {
       "app": "dist/app.js",
       "api": "dist/api.js"
@@ -29,9 +33,8 @@
       "app": "src/app.ts",
       "api": "src/api.ts"
     },
-    "host": "^10.3.0",
     "sandbox": {
-      "enabled": true,
+      "enabled": false,
       "requestedScopes": {}
     }
   },
@@ -50,12 +53,12 @@
   "devDependencies": {
     "@directus/extensions-sdk": "11.0.9",
     "@types/node": "^20.14.9",
-    "@types/speakingurl": "^13.0.6",
     "node-releaser": "^2.1.4",
     "typescript": "^5.5.3",
     "vue": "^3.4.31"
   },
   "dependencies": {
+    "@types/speakingurl": "^13.0.6",
     "speakingurl": "^14.0.1"
   }
 }
