@@ -1,8 +1,8 @@
 {
-  "name": "directus-operation-slugify",
+  "name": "@muratgozel/directus-operation-slugify",
   "description": "Generates a language aware slug from texts.",
   "icon": "extension",
-  "version": "v1.1.4",
+  "version": "v1.1.5",
   "keywords": [
     "directus",
     "directus-extension",

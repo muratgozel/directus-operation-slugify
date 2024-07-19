@@ -8,7 +8,7 @@ https://docs.directus.io/extensions/installing-extensions.html
 
 The extension also available as an npm package:
 ```sh
-npm i directus-operation-slugify
+npm i @muratgozel/directus-operation-slugify
 ```
 
 If you still not sure, check `npm run up` and `npm run up-dev` commands. Those are the ones I use for installing this extension.
